@@ -5,7 +5,7 @@ echo -e "\e[1m== Subgit Configuration Experiment ==\e[0m"
 echo         "====================================="
 echo ""
 echo "Start by verifying you can ssh to the svn container:"
-echo -e "\e[90mNote: SSH Keys are: \e[0;1m$(cat /ssh-keys/key-type)\e[0m"
+echo -e "\e[90mNote: SSH Keys are: \e[1m$(cat /ssh-keys/key-type)\e[0m"
 echo ""
 echo -e " \$ \e[33mssh -i ~/.ssh/id-blank svnuser@svnserver\e[0m"
 echo -e " \$ \e[33mssh -i ~/.ssh/id-keyed svnuser@svnserver\e[0m  (keyphrase is 'keyed')"
@@ -21,4 +21,5 @@ fi
 if [ -f ~/"${TEST_CONFIG}" ]; then
   echo -e "See \e[33m~/${TEST_CONFIG}\e[0m for an example config to use after configure"
 fi
-
+echo -e "See \e[33mhistory\e[0m for a complete command run."
+echo ""

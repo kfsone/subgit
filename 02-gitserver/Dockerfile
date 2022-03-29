@@ -48,7 +48,7 @@ RUN mkdir --mode 0760 ~gituser/.ssh && chown gituser.gituser ~gituser/.ssh
 
 COPY ./bashrc /tmp/bashrc
 COPY ./bash_history /home/gituser/.bash_history
-RUN cat /tmp/bashrc >>~/.bashrc && rm /tmp/bashrc && chown gituser.gituser ~gituser/.bash*
+RUN cat /tmp/bashrc >>~gituser/.bashrc && rm /tmp/bashrc && chown gituser.gituser ~gituser/.bash*
 
 
 # ------------------------------------------------------------------------------
