@@ -8,7 +8,7 @@
 # Install the shared ssh keys
 cp /ssh-keys/id* /home/gituser/.ssh/
 cp /ssh-keys/*config* /home/gituser/
-chown gituser.gituser /home/gituser/.ssh/*
+chown -R gituser.gituser /home/gituser/
 chmod 0600 /home/gituser/.ssh/*
 
 echo -n "use 'docker exec -it 02-subgit /bin/bash' to enter the container environment."

@@ -81,6 +81,8 @@ RUN	echo "# Welcome to Project2, at last"				   \
 # Third layer: enable ssh (from other containers)
 FROM population as ssh-setup
 
+ENV SSH_KEY_TYPE rsa
+
 # System SSH key
 USER root
 RUN	 ssh-keygen -A && mkdir /run/sshd
@@ -88,18 +90,19 @@ RUN	 ssh-keygen -A && mkdir /run/sshd
 # Create ssh keys locally, so that the run script can expose them to other containers.
 RUN	 mkdir /tmp/ssh-keys
 
-# Create two keys: one with the passphrase "keyed"
+# Create pairs of keys: one with the passphrase "keyed" and the other with a blank passphrase
 # NOTE: use pem format, because subgit requires it.
-RUN	 ssh-keygen -m pem -t ecdsa -f /tmp/ssh-keys/id-keyed -N "keyed"
-# and the other with a blank passphrase
-RUN  ssh-keygen -m pem -t ecdsa -f /tmp/ssh-keys/id-blank -N ""
+RUN	 ssh-keygen -m pem -t ${SSH_KEY_TYPE} -f /tmp/ssh-keys/id-keyed -N "keyed" && \
+	 ssh-keygen -m pem -t ${SSH_KEY_TYPE} -f /tmp/ssh-keys/id-blank -N ""      && \
+	 echo "${SSH_KEY_TYPE}" >/tmp/ssh-keys/key-type
 
 # Populate svnuser's .ssh folder, authorize both keys, fix permissions
 RUN  mkdir --mode 0760 ~svnuser/.ssh && \
 	 cat /tmp/ssh-keys/*.pub >~svnuser/.ssh/authorized_keys && \
 	 cp /tmp/ssh-keys/* ~svnuser/.ssh/ && \
 	 chown -R svnuser.svnuser ~svnuser/.ssh && \
-	 chmod 0600 ~svnuser/.ssh/authorized_keys
+	 chmod 0600 ~svnuser/.ssh/authorized_keys && \
+	 cat ~svnuser/.ssh/authorized_keys
 
 
 # -----------------------------------------------------------------------------

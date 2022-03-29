@@ -7,7 +7,8 @@
 #  - tails the sshd log file to keep container alive.
 
 echo "-- Exporting ssh keys to ssh-keys volume."
-cp /tmp/ssh-keys/* /ssh-keys/
+rm -f /ssh-keys/id*
+cp -pf /tmp/ssh-keys/* /ssh-keys/
 
 echo "-- Starting container-only sshd in the background"
 /usr/sbin/sshd -e -E /var/log/syslog -p 22

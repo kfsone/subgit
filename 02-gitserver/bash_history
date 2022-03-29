@@ -1,0 +1,7 @@
+ssh -i ~/.ssh/id-blank svnuser@svnserver  # connect with the blank key  #1
+ssh -i ~/.ssh/id-keyed svnuser@svnserver  # keyphrase is: keyed         #2
+more subgit-test-config                   # my sample config            #3
+subgit configure svn+ssh://svnuser@svnserver/svn/Project1 Project1.git  #4
+# cp subgit-test-config Project1.git/subgit/config                      #5
+# subgit install Project1.git                                           #6
+# intentional capture of demo history: keep hitting "up"

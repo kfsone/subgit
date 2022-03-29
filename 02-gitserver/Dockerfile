@@ -46,8 +46,9 @@ FROM base as with-user
 RUN	useradd -ms /bin/bash gituser
 RUN mkdir --mode 0760 ~gituser/.ssh && chown gituser.gituser ~gituser/.ssh
 
-USER gituser
-COPY ./.bashrc /home/gituser/.bashrc
+COPY ./bashrc /tmp/bashrc
+COPY ./bash_history /home/gituser/.bash_history
+RUN cat /tmp/bashrc >>~/.bashrc && rm /tmp/bashrc && chown gituser.gituser ~gituser/.bash*
 
 
 # ------------------------------------------------------------------------------

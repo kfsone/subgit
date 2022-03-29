@@ -3,3 +3,4 @@
 .vs
 
 ssh-keys/id-*
+ssh-keys/key-type
