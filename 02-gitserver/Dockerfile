@@ -25,7 +25,7 @@ FROM ubuntu:20.04 AS base
 RUN	echo 'Acquire::Http::Proxy "http://wafer.lan:3142/";' >/etc/apt/apt.conf.d/02proxy
 
 RUN apt update && \
-	apt install -qy openssh-client subversion wget openjdk-17-jre-headless vim nano
+	apt install -qy openssh-client subversion wget openjdk-17-jre-headless vim nano python3
 
 # Fetch the subgit package and install it
 RUN wget -O subgit.deb https://subgit.com/files/subgit_3.3.13_all.deb
@@ -46,9 +46,13 @@ FROM base as with-user
 RUN	useradd -ms /bin/bash gituser
 RUN mkdir --mode 0760 ~gituser/.ssh && chown gituser.gituser ~gituser/.ssh
 
+USER gituser
+WORKDIR /home/gituser
+VOLUME /configs
+
 COPY ./bashrc /tmp/bashrc
-COPY ./bash_history /home/gituser/.bash_history
-RUN cat /tmp/bashrc >>~gituser/.bashrc && rm /tmp/bashrc && chown gituser.gituser ~gituser/.bash*
+COPY ./bash_history /home/gituser/
+RUN cat /tmp/bashrc >>~gituser/.bashrc
 
 
 # ------------------------------------------------------------------------------

@@ -23,3 +23,7 @@ if [ -f ~/"${TEST_CONFIG}" ]; then
 fi
 echo -e "See \e[33mhistory\e[0m for a complete command run."
 echo ""
+echo -e "Finally, there is a bulk config tester in \e[33m/configs/tryconfigs.py\e[0m"
+
+export PS1="\x1b[32m${PS1}\x1b[0m"
+export PS2="\x1b[32m${PS2}\x1b[0m"

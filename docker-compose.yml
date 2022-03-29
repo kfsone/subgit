@@ -10,5 +10,6 @@ services:
     build: ./02-gitserver
     volumes:
       - ./ssh-keys:/ssh-keys
+      - ./configs:/configs
     depends_on:
       - svnserver

@@ -8,7 +8,7 @@
 
 echo "-- Exporting ssh keys to ssh-keys volume."
 rm -f /ssh-keys/id*
-cp -pf /tmp/ssh-keys/* /ssh-keys/
+cp -pf /tmp/new-ssh-keys/* /ssh-keys/
 
 echo "-- Starting container-only sshd in the background"
 /usr/sbin/sshd -e -E /var/log/syslog -p 22

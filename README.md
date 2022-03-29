@@ -62,3 +62,22 @@ then tails the ssh server's log to keep the container alive; the gitserver just
 imports ssh keys from the first container and then sits in a sleep so you can
 exec into it.
 
+
+# Mass Tester
+
+Python script `/configs/tryconfigs.py` can be used to bulk-test a whole slew
+of configurations to test for a scenario that works.
+
+It will attempt different config combos until it finds one that works and
+then stop, or it will proceed until all combinations are exhausted and print
+a summary report of the different errors that occured.
+
+Run with `--debug` for verbose logging.
+
+```
+$ cd /configs
+$ python3 tryconfigs.py [--debug]
+...
+```
+
+
