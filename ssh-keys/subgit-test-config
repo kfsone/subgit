@@ -1,0 +1,57 @@
+[core]
+	shared = false
+	logs = subgit/logs
+	authorsFile = subgit/authors.txt
+	authorsFileEncoding = UTF-8
+	defaultDomain = localhost
+	pathEncoding = UTF-8
+
+[svn]
+	url = svn+ssh://svnserver/svn/Project1
+	trunk = Trunk:refs/heads/master
+	branches = Branches/*:refs/heads/*
+
+	fetchInterval = 60
+	connectTimeout = 300
+	readTimeout = 600
+	httpSpooling = false
+
+	keepGitCommitTime = false
+
+	auth = default
+
+[translate]
+	eols = false
+	ignores = true
+
+[auth "default"]
+	# Passwords file path. Passwords file contains user name/password pairs that should be
+	# used to log into Subversion repository.  
+	passwords = subgit/passwd
+	useDefaultSubversionConfigurationDirectory = false
+	subversionConfigurationDirectory = /home/svnuser/.subversion
+	userName = svnuser
+	svnKeyFile = /home/svnuser/.ssh/id-blank
+	#svnKeyFile = /home/svnuser/.ssh/id-keyed
+	#svnKeyPassphrase = keyed
+
+# 
+# Options specific to the background translation process.
+# 
+[daemon]
+	# Pid file path.
+	pidFile = subgit/daemon.pid
+
+	# Timeout in seconds; background translation process exits
+	# after being idle for the specified amount of seconds.
+	#
+	# 0 seconds timeout means that translation process exits immediately.
+	#
+	# Larger timeout values may improve translation performance by reducing
+	# translation process startup overhead.
+	idleTimeout = infinity
+
+	# Explicit translation process classpath or path to the directory
+	# that contains jars that have to be on the process classpath.
+	classpath = subgit/lib
+

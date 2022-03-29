@@ -1,0 +1,14 @@
+version:  '3'
+
+services:
+  svnserver:
+    build: ./01-svnserver
+    volumes:
+      - ./ssh-keys:/ssh-keys
+
+  gitserver:
+    build: ./02-gitserver
+    volumes:
+      - ./ssh-keys:/ssh-keys
+    depends_on:
+      - svnserver
