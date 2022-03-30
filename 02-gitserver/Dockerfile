@@ -51,7 +51,7 @@ WORKDIR /home/gituser
 VOLUME /configs
 
 COPY ./bashrc /tmp/bashrc
-COPY ./bash_history /home/gituser/
+COPY ./bash_history /home/gituser/.bash_history
 RUN cat /tmp/bashrc >>~gituser/.bashrc
 
 
