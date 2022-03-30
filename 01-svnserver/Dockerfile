@@ -86,8 +86,8 @@ USER root
 RUN	 ssh-keygen -A && mkdir /run/sshd
 
 # Create a series of SSH keys in both openssh and pem format, with and without keys.
-COPY ./create-ssh-keys.sh /root
-RUN	 chmod +x /root/create-ssh-keys.sh && /root/create-ssh-keys.sh
+COPY ./create-ssh-keys.sh /root/create-ssh-keys.sh
+RUN	 bash -c /root/create-ssh-keys.sh
 
 # Populate svnuser's .ssh folder, authorize both keys, fix permissions
 RUN  mkdir --mode 0760 ~svnuser/.ssh && \
