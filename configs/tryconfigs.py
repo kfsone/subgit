@@ -119,6 +119,8 @@ class Tester:
 
         logger.debug("See: %s", log_file)
         print()
+
+        execute(f"subgit uninstall {PROJECT_DIR}")
         
         FAILURES[error].append((key_type, key_format, key_phrase, with_user, with_name, with_phrase, log_file))
 
