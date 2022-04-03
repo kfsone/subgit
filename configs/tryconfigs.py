@@ -38,7 +38,7 @@ logger = logging.getLogger("tryconfigs")
 
 def execute(cmd: str):
     logger.debug("execute: %s", cmd)
-    return subprocess.run(cmd, shell=True, capture_output=True)
+    return subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 class Tester:
