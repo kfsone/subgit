@@ -1,6 +1,18 @@
 Docker experiment for SubGit svn+ssh configuration
 ==================================================
 
+# Bug resolved
+
+This repos was originally created to reproduce a low-level ssh issue, but
+Tmatesoft investigated and resolved it in short order:
+https://support.tmatesoft.com/t/how-to-configure-svn-ssh-to-work-with-ubuntu-20-04/2803/2
+
+I'll leave this here for a while because it may be generally useful for people
+experimenting with setting up subgit and trying out different configurations.
+
+-Oliver
+
+
 # Scenario
 
 This docker config creates two containers:
